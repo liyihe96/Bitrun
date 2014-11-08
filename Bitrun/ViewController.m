@@ -65,6 +65,7 @@
     NSLog(@"%@", accessToken);
 
     [[NSUserDefaults standardUserDefaults] setValue:accessToken forKey:@"CoinBaseAccessToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -84,9 +85,6 @@
         NSLog(@"update");
         self.statusLabel.text = [AAPLActivityDataManager  activityTypeToString:type];
     }];
-
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -19,7 +19,6 @@
 		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
 		07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034741A0E37EE00B00408 /* BitrunAPI.m */; };
-		07B034781A0E37FD00B00408 /* HTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034771A0E37FD00B00408 /* HTTPClient.m */; };
 		93D89DC526FE48AF421358C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +54,6 @@
 		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
 		07B034731A0E37EE00B00408 /* BitrunAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitrunAPI.h; sourceTree = "<group>"; };
 		07B034741A0E37EE00B00408 /* BitrunAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitrunAPI.m; sourceTree = "<group>"; };
-		07B034761A0E37FD00B00408 /* HTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClient.h; sourceTree = "<group>"; };
-		07B034771A0E37FD00B00408 /* HTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClient.m; sourceTree = "<group>"; };
 		686F4EA3B9CC5149137DAFC6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8394183D0CD796356D74B4F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,8 +168,6 @@
 			children = (
 				07B034731A0E37EE00B00408 /* BitrunAPI.h */,
 				07B034741A0E37EE00B00408 /* BitrunAPI.m */,
-				07B034761A0E37FD00B00408 /* HTTPClient.h */,
-				07B034771A0E37FD00B00408 /* HTTPClient.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -335,7 +330,6 @@
 				07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,
 				07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */,
-				07B034781A0E37FD00B00408 /* HTTPClient.m in Sources */,
 				07235D0B1A0E0BC8007DCDAC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

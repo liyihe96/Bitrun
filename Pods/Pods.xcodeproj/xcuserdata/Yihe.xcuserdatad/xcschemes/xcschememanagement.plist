@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-SIOSocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-coinbase-official.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1B665A3517C9143B772D938C</key>
+		<key>09B940366DB957365AB306A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43DF82813D4E0C33795E054F</key>
+		<key>1216C26A362DCDA713963D5D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7CCEE28EB74EE3238D0403C</key>
+		<key>A6BE5846BF48184CC66EB32C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D60D784A91D2CF1DE3EFDFE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

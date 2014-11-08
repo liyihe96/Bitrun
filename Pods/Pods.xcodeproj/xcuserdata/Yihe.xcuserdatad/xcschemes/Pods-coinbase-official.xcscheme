@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43DF82813D4E0C33795E054F"
+               BlueprintIdentifier = "1216C26A362DCDA713963D5D"
                BuildableName = "libPods-coinbase-official.a"
                BlueprintName = "Pods-coinbase-official"
                ReferencedContainer = "container:Pods.xcodeproj">

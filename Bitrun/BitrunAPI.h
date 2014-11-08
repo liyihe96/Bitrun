@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import <SIOSocket/SIOSocket.h>
+
+#define baseUrl @"http://requestb.in/puypi6pu"
 
 @interface BitrunAPI : NSObject
-
++ (BitrunAPI *)sharedInstance;
+- (void)emit:(NSString *)event args:(SIOParameterArray *)args;
++ (SIOParameterArray *)argsAppendByAccessToken:(SIOParameterArray *)args;
 @end
