@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface MotionActivityQuery : NSObject
-@property (nonatomic, strong) NSDate *startDate;
-@property (nonatomic, strong) NSDate *endDate;
-@property (nonatomic) BOOL isToday;
+@property (nonatomic, strong) NSDate *startTime;
+@property (nonatomic, strong) NSDate *endTime;
+@property BOOL isToday;
 
 - (NSString *)description;
-+ (MotionActivityQuery *)queryStartingFromDate:(NSDate *)startDate offsetByDay:(NSInteger)offset;
++ (MotionActivityQuery *)queryStartingFromDate:(NSDate *)date offsetByDay:(NSInteger)offset;
+
 @end

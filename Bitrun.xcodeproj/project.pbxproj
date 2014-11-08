@@ -15,8 +15,9 @@
 		07235D191A0E0BC8007DCDAC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07235D171A0E0BC8007DCDAC /* LaunchScreen.xib */; };
 		07235D251A0E0BC8007DCDAC /* BitrunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D241A0E0BC8007DCDAC /* BitrunTests.m */; };
 		07235D351A0E0D87007DCDAC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07235D341A0E0D87007DCDAC /* CoreMotion.framework */; };
-		07235D381A0E0EBB007DCDAC /* MotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */; };
-		07235D3B1A0E115E007DCDAC /* ActivityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */; };
+		07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D3F1A0E31A4007DCDAC /* AAPLActivityDataManager.m */; };
+		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
+		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +45,11 @@
 		07235D231A0E0BC8007DCDAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07235D241A0E0BC8007DCDAC /* BitrunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitrunTests.m; sourceTree = "<group>"; };
 		07235D341A0E0D87007DCDAC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		07235D361A0E0EBB007DCDAC /* MotionActivityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionActivityQuery.h; sourceTree = "<group>"; };
-		07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionActivityQuery.m; sourceTree = "<group>"; };
-		07235D391A0E115E007DCDAC /* ActivityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataManager.h; sourceTree = "<group>"; };
-		07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataManager.m; sourceTree = "<group>"; };
+		07235D3E1A0E31A4007DCDAC /* AAPLActivityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLActivityDataManager.h; sourceTree = "<group>"; };
+		07235D3F1A0E31A4007DCDAC /* AAPLActivityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLActivityDataManager.m; sourceTree = "<group>"; };
+		07235D401A0E31A4007DCDAC /* AAPLMotionActivityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLMotionActivityQuery.h; sourceTree = "<group>"; };
+		07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLMotionActivityQuery.m; sourceTree = "<group>"; };
+		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +134,11 @@
 		07235D311A0E0CC1007DCDAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				07235D391A0E115E007DCDAC /* ActivityDataManager.h */,
-				07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */,
-				07235D361A0E0EBB007DCDAC /* MotionActivityQuery.h */,
-				07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */,
+				07235D3E1A0E31A4007DCDAC /* AAPLActivityDataManager.h */,
+				07235D3F1A0E31A4007DCDAC /* AAPLActivityDataManager.m */,
+				07235D401A0E31A4007DCDAC /* AAPLMotionActivityQuery.h */,
+				07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */,
+				07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -249,11 +252,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */,
+				07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */,
 				07235D111A0E0BC8007DCDAC /* ViewController.m in Sources */,
-				07235D381A0E0EBB007DCDAC /* MotionActivityQuery.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,
+				07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */,
 				07235D0B1A0E0BC8007DCDAC /* main.m in Sources */,
-				07235D3B1A0E115E007DCDAC /* ActivityDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

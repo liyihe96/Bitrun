@@ -10,8 +10,17 @@
 
 @class CMMotionActivity;
 
+typedef NS_ENUM(NSInteger, ActivityType) {
+    ActivityTypeWalking,
+    ActivityTypeRunning,
+    ActivityTypeDriving,
+    ActivityTypeMoving,
+    ActivityTypeStationary,
+    ActivityTypeNone
+};
+
 typedef void (^stepUpdateHandler)(NSNumber *stepCount);
-typedef void (^motionUpdateHandler)();
+typedef void (^motionUpdateHandler)(ActivityType type);
 
 @interface ActivityDataManager:NSObject 
 + (BOOL)checkAvailability;
@@ -27,5 +36,8 @@ typedef void (^motionUpdateHandler)();
 - (void)startMotionUpdates:(motionUpdateHandler)handler;
 - (void)stopMotionUpdates;
 
+// Some convenience functions
++ (ActivityType)activityToType:(CMMotionActivity *)activity;
++ (NSString *)activityTypeToString:(ActivityType)type;
 @end
 

@@ -7,17 +7,53 @@
 //
 
 #import "ViewController.h"
+#import "AAPLActivityDataManager.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *stepCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+//@property (nonatomic, strong) NSNumber *currentSteps;
+@property (nonatomic, strong) NSString *currentStatus;
 
 @end
 
 @implementation ViewController
+{
+    AAPLActivityDataManager *_dataManager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
+
+- (void)refreshView
+{
+    if (!_dataManager) {
+        _dataManager = [[AAPLActivityDataManager alloc] init];
+    }
+    [_dataManager stopStepUpdates];
+    [_dataManager stopMotionUpdates];
+
+    [_dataManager startStepUpdates:^(NSNumber *stepCount) {
+        NSLog(@"%@", stepCount);
+        self.stepCountLabel.text =  [stepCount stringValue];
+    }];
+    [_dataManager startMotionUpdates:^(AAPLActivityType type) {
+        NSLog(@"update");
+        self.statusLabel.text = [AAPLActivityDataManager  activityTypeToString:type];
+    }];
+
+
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self refreshView];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

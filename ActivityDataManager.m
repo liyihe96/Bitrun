@@ -8,6 +8,7 @@
 
 #import <CoreMotion/CoreMotion.h>
 #import "ActivityDataManager.h"
+#import <UIKit/UIKit.h>
 
 @implementation ActivityDataManager
 {
@@ -31,15 +32,32 @@
     _pedometer = [[CMPedometer alloc] init];
 }
 
++ (BOOL)checkAvailability
+{
+    static dispatch_once_t sentinel;
+    static BOOL available;
+    dispatch_once(&sentinel, ^{
+        available = YES;
+        if ([CMMotionActivityManager isActivityAvailable]  == NO) {
+            NSLog(@"Motion Activity is not available!");
+            available = NO;
+        }
+        
+        if ([CMPedometer isStepCountingAvailable] == NO) {
+            NSLog(@"Step counting is not available!");
+            available = NO;
+        }
+    });
+    return available;
+}
+
 - (void)_handleError:(NSError *)error
 {
     if (error.code == CMErrorMotionActivityNotAuthorized) {
         dispatch_async(dispatch_get_main_queue(), ^{
-//            UIAlertController *alertController = [UIAlertController
-//                                                  alertControllerWithTitle:@"This app is not authorized for M7"
-//                                                  message:@"No activity or step counting is available"
-//                                                  preferredStyle:UIAlertControllerStyleAlert];
-//            [self presentViewController:alertController animated:YES completion:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This app is not authorized for M7"
+                                                            message:@"No activity or step counting is available" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            [alert show];
         });
     } else {
         NSLog(@"Error occurred %@", [error description]);
@@ -74,7 +92,7 @@
 - (void)startMotionUpdates:(motionUpdateHandler)handler
 {
     [_motionActivityMgr startActivityUpdatesToQueue:[NSOperationQueue mainQueue] withHandler:^(CMMotionActivity *activity) {
-        handler();
+        handler([ActivityDataManager activityToType:activity]);
     }];
 }
 
@@ -82,6 +100,43 @@
 {
     [_motionActivityMgr stopActivityUpdates];
 }
+
+#pragma mark Utility functions
+
++ (ActivityType)activityToType:(CMMotionActivity *)activity
+{
+    if (activity.walking) {
+        return ActivityTypeWalking;
+    } else if (activity.running) {
+        return ActivityTypeRunning;
+    } else if (activity.automotive) {
+        return ActivityTypeDriving;
+    } else if (activity.stationary) {
+        return ActivityTypeStationary;
+    } else if (!activity.unknown) {
+        return ActivityTypeMoving;
+    } else {
+        return ActivityTypeNone;
+    }
+}
++ (NSString *)activityTypeToString:(ActivityType)type
+{
+    switch (type) {
+        case ActivityTypeWalking:
+            return @"Walking";
+        case ActivityTypeRunning:
+            return @"Running";
+        case ActivityTypeDriving:
+            return @"Automotive";
+        case ActivityTypeStationary:
+            return @"Not Moving";
+        case ActivityTypeMoving:
+            return @"Moving";
+        default:
+            return @"Unclassified";
+    }
+}
+
 
 
 
