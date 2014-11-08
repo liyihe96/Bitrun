@@ -16,6 +16,7 @@
 		07235D251A0E0BC8007DCDAC /* BitrunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D241A0E0BC8007DCDAC /* BitrunTests.m */; };
 		07235D351A0E0D87007DCDAC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07235D341A0E0D87007DCDAC /* CoreMotion.framework */; };
 		07235D381A0E0EBB007DCDAC /* MotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */; };
+		07235D3B1A0E115E007DCDAC /* ActivityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		07235D341A0E0D87007DCDAC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		07235D361A0E0EBB007DCDAC /* MotionActivityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionActivityQuery.h; sourceTree = "<group>"; };
 		07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionActivityQuery.m; sourceTree = "<group>"; };
+		07235D391A0E115E007DCDAC /* ActivityDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataManager.h; sourceTree = "<group>"; };
+		07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 		07235D311A0E0CC1007DCDAC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				07235D391A0E115E007DCDAC /* ActivityDataManager.h */,
+				07235D3A1A0E115E007DCDAC /* ActivityDataManager.m */,
 				07235D361A0E0EBB007DCDAC /* MotionActivityQuery.h */,
 				07235D371A0E0EBB007DCDAC /* MotionActivityQuery.m */,
 			);
@@ -248,6 +253,7 @@
 				07235D381A0E0EBB007DCDAC /* MotionActivityQuery.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,
 				07235D0B1A0E0BC8007DCDAC /* main.m in Sources */,
+				07235D3B1A0E115E007DCDAC /* ActivityDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
