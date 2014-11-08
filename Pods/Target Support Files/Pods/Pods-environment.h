@@ -48,3 +48,9 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 4
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// coinbase-official
+#define COCOAPODS_POD_AVAILABLE_coinbase_official
+#define COCOAPODS_VERSION_MAJOR_coinbase_official 1
+#define COCOAPODS_VERSION_MINOR_coinbase_official 3
+#define COCOAPODS_VERSION_PATCH_coinbase_official 0
+

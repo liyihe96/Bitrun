@@ -55,9 +55,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="906-2S-sFU">
+                                <rect key="frame" x="236" y="506" width="127" height="30"/>
+                                <state key="normal" title="Login to CoinBase">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginCoinBase:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="UWo-de-RqA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="906-2S-sFU" secondAttribute="centerX" id="0kf-Zv-c7b"/>
                             <constraint firstItem="0Aa-jb-ggl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="34" id="5ir-wA-svu"/>
                             <constraint firstItem="IjQ-vm-Hsg" firstAttribute="top" secondItem="0Aa-jb-ggl" secondAttribute="bottom" constant="50" id="ErF-eR-PQX"/>
                             <constraint firstItem="1r3-su-wHt" firstAttribute="centerX" secondItem="6Eg-jr-Ufj" secondAttribute="centerX" id="XwE-Rm-vdi"/>
@@ -66,7 +76,14 @@
                             <constraint firstItem="0Aa-jb-ggl" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="iG0-Ty-IpS"/>
                             <constraint firstItem="1r3-su-wHt" firstAttribute="top" secondItem="6Eg-jr-Ufj" secondAttribute="bottom" constant="95" id="mfq-cY-tnK"/>
                             <constraint firstItem="6Eg-jr-Ufj" firstAttribute="centerX" secondItem="IjQ-vm-Hsg" secondAttribute="centerX" id="ndS-Iz-lx2"/>
+                            <constraint firstAttribute="centerY" secondItem="906-2S-sFU" secondAttribute="centerY" constant="-221" id="pWy-3N-7Ee"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="906-2S-sFU" secondAttribute="bottom" constant="64" id="sY4-1e-RL7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pWy-3N-7Ee"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="statusLabel" destination="1r3-su-wHt" id="4Uj-RA-Ahu"/>

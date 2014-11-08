@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Coinbase.h"
+#import "CoinbaseOAuth.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +22,36 @@
     // Override point for customization after application launch.
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+//    NSLog(@"-------GOT IT");
+//    NSLog(@"%@",[url scheme]);
+    if ([[url scheme] isEqualToString:@"self.bitrun.coinbase-oauth"]) {
+//        NSLog(@"--------EQUAL");
+        // This is a redirect from the Coinbase OAuth web page or app.
+        [CoinbaseOAuth finishOAuthAuthenticationForUrl:url
+                                              clientId:kCoinBaseClientID
+                                          clientSecret:kCoinBaseClientSecret
+                                               success:^(NSDictionary *result) {
+                                                   // Tokens successfully obtained!
+                                                   // Do something with them (store them, etc.)
+//                                                   NSString *accessToken = [result objectForKey:@"access_token"];
+//                                                   NSLog(@"---------accessToken: %@", accessToken);
+                                                   ViewController *controller = (ViewController *)self.window.rootViewController;
+                                                   [controller authenticationComplete:result];
+
+                                                   // Note that you should also store 'expire_in' and refresh the token using [CoinbaseOAuth getOAuthTokensForRefreshToken] when it expires
+                                               } failure:^(NSError *error) {
+                                                   [[[UIAlertView alloc] initWithTitle:@"OAuth Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];                                               }];
+        return YES;
+    }
+    return NO;
+    
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
