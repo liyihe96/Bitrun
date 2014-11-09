@@ -50,19 +50,21 @@
 
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args
 {
-    NSLog(@"----------CAlled");
+//    NSLog(@"----------CAlled");
 //    if (self.socketIsConnected)
 //    {
-        NSLog(@"-------------SENT");
+//        NSLog(@"-------------SENT");
         [self.socket emit:event args:args];
 //    }
 }
 
-+ (SIOParameterArray *)argsAppendByAccessToken:(SIOParameterArray *)args
++ (NSDictionary *)argsAppendByAccessToken:(NSDictionary *)args
 {
-    NSMutableArray *array = [NSMutableArray arrayWithArray:args];
-    [array addObject:[[NSUserDefaults standardUserDefaults] valueForKey:@"CoinBaseAccessToken"]];
-    return array;
+//    NSLog(@"%@",args);
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:args];
+    [dic addEntriesFromDictionary:@{@"coinbase_id":[[NSUserDefaults standardUserDefaults] valueForKey:@"CoinBaseID"] }];
+//    NSLog(@"-------dic:%@",dic);
+    return dic;
 }
 
 + (NSString *)iso8601StringFromDate:(NSDate *)date
@@ -74,6 +76,17 @@
     
     NSString *iso8601String = [dateFormatter stringFromDate:date];
     return iso8601String;
+}
+
+- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success
+{
+    [self.httpManager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success){
+            success(operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 @end

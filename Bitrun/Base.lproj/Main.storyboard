@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="taX-qy-tyb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -21,6 +21,9 @@
                                 <state key="normal" title="Login to CoinBase">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="taX-qy-tyb" eventType="touchUpInside" id="Kb2-HE-4Vn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,6 +32,9 @@
                             <constraint firstAttribute="centerX" secondItem="5qH-8G-UGY" secondAttribute="centerX" constant="-0.5" id="lCo-IM-LlL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="presentation" identifier="LoginSucceed" id="P3u-O7-PH7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRz-aI-mrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

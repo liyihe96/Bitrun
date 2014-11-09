@@ -15,6 +15,7 @@
 @interface BitrunAPI : NSObject
 + (BitrunAPI *)sharedInstance;
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args;
-+ (SIOParameterArray *)argsAppendByAccessToken:(SIOParameterArray *)args;
++ (NSDictionary *)argsAppendByAccessToken:(NSDictionary *)args;
 + (NSString *)iso8601StringFromDate:(NSDate *)date;
+- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success;
 @end

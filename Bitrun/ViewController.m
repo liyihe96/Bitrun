@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "AAPLActivityDataManager.h"
 #import "AppDelegate.h"
-#import "CoinbaseOAuth.h"
 #import <CoreMotion/CoreMotion.h>
 #import "BitrunAPI.h"
 
@@ -36,7 +35,7 @@
     _pedometerdData = pedometerdData;
     NSDate *nowDate = [NSDate date];
     NSDictionary *arg = @{@"distance":pedometerdData.distance, @"from":[BitrunAPI iso8601StringFromDate:self.lastDate], @"to":[BitrunAPI iso8601StringFromDate: nowDate], @"steps":pedometerdData.numberOfSteps};
-    [[BitrunAPI sharedInstance] emit:@"pedometer" args:@[arg]];
+    [[BitrunAPI sharedInstance] emit:@"pedometer" args:@[[BitrunAPI argsAppendByAccessToken: arg ]]];
     self.lastDate = nowDate;
 
 }
@@ -53,39 +52,9 @@
 #pragma mark -CoinBase OAuth
 
 - (IBAction)loginCoinBase:(UIButton *)sender {
-    [CoinbaseOAuth startOAuthAuthenticationWithClientId:kCoinBaseClientID
-                                                  scope:@"user balance"
-                                            redirectUri:@"self.bitrun.coinbase-oauth://coinbase-oauth" // Same as entered into Create Application
-                                                   meta:nil];
+   
 }
 
-- (void)authenticationComplete:(NSDictionary *)response {
-    
-    NSLog(@"--------RESPONSE");
-    // Tokens successfully received!
-    NSString *accessToken = [response objectForKey:@"access_token"];
-    NSString *refreshToken = [response objectForKey:@"refresh_token"];
-    NSNumber *expiresIn = [response objectForKey:@"expires_in"];
-    // In your app, you will probably want to save these three values at this point.
-//    self.refreshToken = refreshToken;
-    
-    // Now that we are authenticated, load some data
-//    Coinbase *apiClient = [Coinbase coinbaseWithOAuthAccessToken:accessToken];
-//    [apiClient doGet:@"account/balance" parameters:nil success:^(NSDictionary *result) {
-//        self.balanceLabel.text = [[result objectForKey:@"amount"] stringByAppendingFormat:@" %@", [result objectForKey:@"currency"]];
-//    } failure:^(NSError *error) {
-//        NSLog(@"Could not load: %@", error);
-//    }];
-//    [apiClient doGet:@"users" parameters:nil success:^(NSDictionary *result) {
-//        self.emailLabel.text = [[[[result objectForKey:@"users"] objectAtIndex:0] objectForKey:@"user"] objectForKey:@"email"];
-//    } failure:^(NSError *error) {
-//        NSLog(@"Could not load: %@", error);
-//    }];
-    NSLog(@"%@", accessToken);
-
-    [[NSUserDefaults standardUserDefaults] setValue:accessToken forKey:@"CoinBaseAccessToken"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 
 - (void)refreshView
