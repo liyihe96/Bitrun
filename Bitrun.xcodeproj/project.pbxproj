@@ -18,6 +18,7 @@
 		07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D3F1A0E31A4007DCDAC /* AAPLActivityDataManager.m */; };
 		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
+		076364141A0F882400A8233F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 076364131A0F882400A8233F /* ViewController.m */; };
 		076E1A091A0F236A00436D9F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 076E1A081A0F236A00436D9F /* Utility.m */; };
 		079FFF431A0F62EE00B98A49 /* BIG JOHN.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */; };
 		079FFF441A0F62EE00B98A49 /* Slim Joe.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF421A0F62EE00B98A49 /* Slim Joe.otf */; };
@@ -26,7 +27,6 @@
 		07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034741A0E37EE00B00408 /* BitrunAPI.m */; };
 		07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */; };
 		07B438251A0F4FD300C2C542 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */; };
-		07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D4A11A0F06BF00460C66 /* LoginViewController.m */; };
 		93D89DC526FE48AF421358C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +60,8 @@
 		07235D401A0E31A4007DCDAC /* AAPLMotionActivityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLMotionActivityQuery.h; sourceTree = "<group>"; };
 		07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLMotionActivityQuery.m; sourceTree = "<group>"; };
 		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
+		076364121A0F882400A8233F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		076364131A0F882400A8233F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		076E1A071A0F236A00436D9F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		076E1A081A0F236A00436D9F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BIG JOHN.otf"; sourceTree = "<group>"; };
@@ -74,8 +76,6 @@
 		07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplePulsingHaloLayer.m; sourceTree = "<group>"; };
 		07B438231A0F4FD300C2C542 /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
 		07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
-		07E3D4A01A0F06BF00460C66 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		07E3D4A11A0F06BF00460C66 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		686F4EA3B9CC5149137DAFC6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8394183D0CD796356D74B4F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,8 +189,8 @@
 		07235D331A0E0CD1007DCDAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				07E3D4A01A0F06BF00460C66 /* LoginViewController.h */,
-				07E3D4A11A0F06BF00460C66 /* LoginViewController.m */,
+				076364121A0F882400A8233F /* ViewController.h */,
+				076364131A0F882400A8233F /* ViewController.m */,
 				07235D0F1A0E0BC8007DCDAC /* MainViewController.h */,
 				07235D101A0E0BC8007DCDAC /* MainViewController.m */,
 			);
@@ -362,7 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */,
+				076364141A0F882400A8233F /* ViewController.m in Sources */,
 				07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */,
 				07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */,
 				076E1A091A0F236A00436D9F /* Utility.m in Sources */,

@@ -10,7 +10,7 @@
 #import "Coinbase.h"
 #import "CoinbaseOAuth.h"
 #import "MainViewController.h"
-#import "LoginViewController.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -42,7 +42,7 @@
                                                    // Do something with them (store them, etc.)
 //                                                   NSString *accessToken = [result objectForKey:@"access_token"];
 //                                                   NSLog(@"---------accessToken: %@", accessToken);
-                                                   LoginViewController *controller = (LoginViewController *)self.window.rootViewController;
+                                                   ViewController *controller = (ViewController *)self.window.rootViewController;
                                                    [controller authenticationComplete:result];
 
                                                    // Note that you should also store 'expire_in' and refresh the token using [CoinbaseOAuth getOAuthTokensForRefreshToken] when it expires
