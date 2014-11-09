@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import <CoreMotion/CoreMotion.h>
 #import "BitrunAPI.h"
+#import "Utility.h"
+#import "PulsingHaloLayer.h"
 
 
 @interface ViewController ()
@@ -22,6 +24,10 @@
 @property (strong, nonatomic) CMMotionManager *motionManager;
 @property (nonatomic, strong) CMPedometerData *pedometerdData;
 @property (nonatomic, strong) NSDate *lastDate;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (nonatomic, strong) PulsingHaloLayer *halo;
+@property (nonatomic, strong) NSNumber *calNumber;
 
 @end
 
@@ -49,13 +55,30 @@
     _motionManager.accelerometerUpdateInterval = 0.1;
 }
 
-#pragma mark -CoinBase OAuth
-
-- (IBAction)loginCoinBase:(UIButton *)sender {
-   
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self refreshView];
+    [self setNeedsStatusBarAppearanceUpdate];
+    [self.locationView setFrame:CGRectMake(8, 533+124, 426, 0)];
+    self.halo.radius = 240;
+    self.halo = [PulsingHaloLayer layer];
+    self.halo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
+    [self.view.layer addSublayer:self.halo];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.5 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.locationView setFrame:CGRectMake(8, 533, 426, 124)];
+    } completion:nil];
+}
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)refreshView
 {
@@ -93,7 +116,8 @@
 //    NSLog(@"x :%f",acceleration.x);
 //    NSLog(@"y :%f",acceleration.y);
 //    NSLog(@"z :%f",acceleration.z);
-    NSLog(@"cal: %f", acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z *acceleration.z);
+    self.calNumber =  @(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z *acceleration.z);
+    NSLog(@"cal: %@",self.calNumber);
     
 }
 
@@ -119,11 +143,6 @@
 //        _lblMaxRotationZ.text = [NSString stringWithFormat:@"Max Rotation Z: %.2f",_maxRotationZ];
 //    }
 //}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self refreshView];
-}
 
 
 - (void)didReceiveMemoryWarning {

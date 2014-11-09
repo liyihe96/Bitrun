@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		071486861A0F10C800D342CA /* JsonToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 071486851A0F10C800D342CA /* JsonToDictionary.m */; };
 		07235D0B1A0E0BC8007DCDAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D0A1A0E0BC8007DCDAC /* main.m */; };
 		07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D0D1A0E0BC8007DCDAC /* AppDelegate.m */; };
 		07235D111A0E0BC8007DCDAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D101A0E0BC8007DCDAC /* ViewController.m */; };
@@ -19,6 +18,7 @@
 		07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D3F1A0E31A4007DCDAC /* AAPLActivityDataManager.m */; };
 		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
+		076E1A091A0F236A00436D9F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 076E1A081A0F236A00436D9F /* Utility.m */; };
 		07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034741A0E37EE00B00408 /* BitrunAPI.m */; };
 		07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D4A11A0F06BF00460C66 /* LoginViewController.m */; };
 		93D89DC526FE48AF421358C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */; };
@@ -35,8 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		071486841A0F10C800D342CA /* JsonToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonToDictionary.h; sourceTree = "<group>"; };
-		071486851A0F10C800D342CA /* JsonToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonToDictionary.m; sourceTree = "<group>"; };
 		07235D051A0E0BC8007DCDAC /* Bitrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07235D091A0E0BC8007DCDAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07235D0A1A0E0BC8007DCDAC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,6 +54,8 @@
 		07235D401A0E31A4007DCDAC /* AAPLMotionActivityQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLMotionActivityQuery.h; sourceTree = "<group>"; };
 		07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLMotionActivityQuery.m; sourceTree = "<group>"; };
 		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
+		076E1A071A0F236A00436D9F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		076E1A081A0F236A00436D9F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		07B034731A0E37EE00B00408 /* BitrunAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitrunAPI.h; sourceTree = "<group>"; };
 		07B034741A0E37EE00B00408 /* BitrunAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitrunAPI.m; sourceTree = "<group>"; };
 		07E3D4A01A0F06BF00460C66 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		07235D081A0E0BC8007DCDAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				071486841A0F10C800D342CA /* JsonToDictionary.h */,
-				071486851A0F10C800D342CA /* JsonToDictionary.m */,
+				076E1A071A0F236A00436D9F /* Utility.h */,
+				076E1A081A0F236A00436D9F /* Utility.m */,
 				07235D341A0E0D87007DCDAC /* CoreMotion.framework */,
 				07235D0C1A0E0BC8007DCDAC /* AppDelegate.h */,
 				07235D0D1A0E0BC8007DCDAC /* AppDelegate.m */,
@@ -336,11 +336,11 @@
 			files = (
 				07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */,
 				07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */,
+				076E1A091A0F236A00436D9F /* Utility.m in Sources */,
 				07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */,
 				07235D111A0E0BC8007DCDAC /* ViewController.m in Sources */,
 				07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,
-				071486861A0F10C800D342CA /* JsonToDictionary.m in Sources */,
 				07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */,
 				07235D0B1A0E0BC8007DCDAC /* main.m in Sources */,
 			);

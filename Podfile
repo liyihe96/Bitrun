@@ -5,4 +5,4 @@ pod "coinbase-official"
 pod 'SIOSocket', '~> 0.2.0'
 pod 'JGProgressHUD'
 pod "PulsingHalo"
-
+pod "Canvas"

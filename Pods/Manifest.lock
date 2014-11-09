@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Canvas (0.1.2)
   - coinbase-official (1.3)
   - JGProgressHUD (1.2.2)
   - PulsingHalo (0.0.1)
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Canvas
   - coinbase-official
   - JGProgressHUD
   - PulsingHalo
@@ -34,6 +36,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  Canvas: ae2faca05a15c4d6659fb3ae5e2a14817df4449a
   coinbase-official: 862540c9ba59e2549e68f26b9a07b0c20dc32fbb
   JGProgressHUD: a7c58f711eec0b67f257a0821c0bac9194c72398
   PulsingHalo: 4f5fbc25f9efb9f949e4ddad05ca885a11667aa0

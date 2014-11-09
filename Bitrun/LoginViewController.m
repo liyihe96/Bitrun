@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "JGProgressHUD.h"
 #import "BitrunAPI.h"
-#import "JsonToDictionary.h"
 
 @interface LoginViewController ()
 
