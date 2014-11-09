@@ -24,6 +24,7 @@
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *ratioLabel;
 @property (weak, nonatomic) IBOutlet UIView *innerProgressbarView;
 @property (weak, nonatomic) IBOutlet UIView *progressBarView;
 @property (weak, nonatomic) IBOutlet UILabel *stepCountLabel;
@@ -77,10 +78,14 @@
 {
     _pedometerdData = pedometerdData;
     NSDate *nowDate = [NSDate date];
-    NSDictionary *arg = @{@"distance":@([pedometerdData.distance integerValue]- [self.lastData.distance integerValue]), @"from":[BitrunAPI iso8601StringFromDate:self.lastDate], @"to":[BitrunAPI iso8601StringFromDate: nowDate], @"steps":@([pedometerdData.numberOfSteps integerValue] -[self.lastData.numberOfSteps integerValue])};
+    NSDictionary *arg = @{@"distance":@(([pedometerdData.distance doubleValue]- [self.lastData.distance doubleValue])/1000), @"from":[Utility iso8601StringFromDate:self.lastDate], @"to":[Utility iso8601StringFromDate: nowDate], @"steps":@([pedometerdData.numberOfSteps integerValue] -[self.lastData.numberOfSteps integerValue])};
     [[BitrunAPI sharedInstance] emit:@"pedometer" args:@[[BitrunAPI argsAppendByAccessToken: arg ]]];
     self.lastDate = nowDate;
     self.lastData = pedometerdData;
+    [[BitrunAPI sharedInstance]newProgress:@([pedometerdData.distance doubleValue]/1000.0)];
+    self.progressRatio = [[BitrunAPI sharedInstance]getProgreeRatio];
+    NSLog(@"new ratio:%f",self.progressRatio);
+    [self updateUI];
 }
 
 - (void) ReverseGeocode: (CLLocation *)newLocation {
@@ -105,9 +110,15 @@
                    }];
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.progressRatio = 0.7;
+    self.progressRatio = [[BitrunAPI sharedInstance]getProgreeRatio] ;
+    NSLog(@"-------DATA");
+    NSLog(@"%@",[[BitrunAPI sharedInstance] getTotalProgress]);
+    NSLog(@"%@",[[[BitrunAPI sharedInstance] getIncentive] description]);
+    NSLog(@"%f",[[BitrunAPI sharedInstance] getProgreeRatio]);
+
     self.lastDate = ((AppDelegate *)[UIApplication sharedApplication].delegate).openAppDate;
     // Do any additional setup after loading the view, typically from a nib.
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -132,7 +143,6 @@
                                                  // An error occurred, more info is available by looking at the specific status returned.
                                              }
                                          }];
-    self.progressRatio = 0.7;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -160,9 +170,18 @@
     [self.view.layer addSublayer:self.mutiHalo];
     [self setupValues:0];
     [self.progressBarView setAlpha:0];
+    [self.ratioLabel setAlpha:0];
     self.innerProgressbarView.backgroundColor = [UIColor redColor];
     [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, 0, self.innerProgressbarView.frame.size.height) ];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
+    [formatter setMaximumFractionDigits:2];
+    
+    [formatter setMinimumFractionDigits:0];
+    
+    NSString *otherResult = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getIncentive].goal];
+    NSString *result = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getTotalProgress]];
+    self.ratioLabel.text = [NSString stringWithFormat:@"%@km/%@km",result, otherResult];
 }
 
 - (void)setupValues:(int)num
@@ -189,10 +208,31 @@
     } completion:nil];
     [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.progressBarView setAlpha:1];
+        [self.ratioLabel setAlpha:1];
         [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, kMaxInnerProgreeBarWidth * self.progressRatio, self.innerProgressbarView.frame.size.height)];
         UIColor *color = [UIColor colorWithRed:1-self.progressRatio green:self.progressRatio blue:0 alpha:1];
         self.innerProgressbarView.backgroundColor = color;
     } completion:nil];
+    
+}
+
+- (void)updateUI
+{
+    [UIView animateWithDuration:0.5 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, kMaxInnerProgreeBarWidth * self.progressRatio, self.innerProgressbarView.frame.size.height)];
+        UIColor *color = [UIColor colorWithRed:1-self.progressRatio green:self.progressRatio blue:0 alpha:1];
+        self.innerProgressbarView.backgroundColor = color;
+    } completion:nil];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    [formatter setMaximumFractionDigits:2];
+    
+    [formatter setMinimumFractionDigits:0];
+    
+    NSString *otherResult = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getIncentive].goal];
+    NSString *result = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getTotalProgress]];
+    self.ratioLabel.text = [NSString stringWithFormat:@"%@km/%@km",result, otherResult];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

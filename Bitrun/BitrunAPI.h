@@ -9,13 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import <SIOSocket/SIOSocket.h>
+#import "LocalManager.h"
+#import "Incentive.h"
 
-#define baseUrl @"http://requestb.in/puypi6pu"
+#define baseUrl @"bitrunapp.herokuapp.com/api/"
 
 @interface BitrunAPI : NSObject
 + (BitrunAPI *)sharedInstance;
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args;
 + (NSDictionary *)argsAppendByAccessToken:(NSDictionary *)args;
-+ (NSString *)iso8601StringFromDate:(NSDate *)date;
 - (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success;
+- (void)addIncentive:(Incentive *)incentive;
+- (void)addProgress:(NSNumber *)progress;
+- (Incentive *)getIncentive;
+- (NSNumber *)getTotalProgress;
+- (void)newProgress:(NSNumber *)progress;
+- (double)getProgreeRatio;
+
 @end

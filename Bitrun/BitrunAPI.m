@@ -11,6 +11,8 @@
 @interface BitrunAPI()
 @property (nonatomic, strong) SIOSocket * socket;
 @property (nonatomic, strong) AFHTTPRequestOperationManager *httpManager;
+@property (nonatomic, strong) LocalManager *localManager;
+
 //@property BOOL socketIsConnected;
 @end
 
@@ -29,6 +31,7 @@
 //            weakSelf.socketIsConnected = YES;
 //        };
         self.httpManager = [AFHTTPRequestOperationManager manager];
+        self.localManager = [[LocalManager alloc] init];
     }
     return self;
 }
@@ -67,16 +70,7 @@
     return dic;
 }
 
-+ (NSString *)iso8601StringFromDate:(NSDate *)date
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-    
-    NSString *iso8601String = [dateFormatter stringFromDate:date];
-    return iso8601String;
-}
+
 
 - (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success
 {
@@ -87,6 +81,36 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+- (void)addIncentive:(Incentive *)incentive
+{
+    [self.localManager addIncentive: incentive];
+}
+
+- (void)addProgress:(NSNumber *)progress
+{
+    [self.localManager addProgress:progress];
+}
+
+- (Incentive *)getIncentive
+{
+    return [self.localManager getIncentive];
+}
+
+- (NSNumber *)getTotalProgress
+{
+    return [self.localManager getTotalProgress];
+}
+
+- (void)newProgress:(NSNumber *)progress
+{
+    [self.localManager newProgress:progress];
+}
+
+- (double)getProgreeRatio
+{
+    return [self.localManager getProgreeRatio];
 }
 
 @end

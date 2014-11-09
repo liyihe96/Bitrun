@@ -12,5 +12,6 @@
 @interface Utility : NSObject
 
 + (void)insertBlurView:(UIView *)view withStyle:(UIBlurEffectStyle)style;
-
++ (NSString *)iso8601StringFromDate:(NSDate *)date;
++ (NSDate *)dateFromiso8601String:(NSString *)string;
 @end

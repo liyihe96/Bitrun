@@ -11,15 +11,17 @@
 #import "AppDelegate.h"
 #import "JGProgressHUD.h"
 #import "BitrunAPI.h"
+#import "Utility.h"
 
 @interface LoginViewController ()
-
+@property (nonatomic, strong) JGProgressHUD *HUD;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -58,9 +60,9 @@
     //        NSLog(@"Could not load: %@", error);
     //    }];
     NSLog(@"%@", accessToken);
-    JGProgressHUD *HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-    HUD.textLabel.text = @"Loading";
-    [HUD showInView:self.view];
+    self.HUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    self.HUD.textLabel.text = @"Loading";
+    [self.HUD showInView:self.view];
     
     [[NSUserDefaults standardUserDefaults] setValue:accessToken forKey:@"CoinBaseAccessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -76,12 +78,35 @@
         userId =[[[[response objectForKey:@"users"] objectAtIndex:0] objectForKey:@"user"] objectForKey:@"id"];
         [[NSUserDefaults standardUserDefaults] setValue:userId forKey:@"CoinBaseID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        [HUD dismiss];
-        [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
+        [self getIncentive];
+    }];
+}
+
+- (void)getIncentive
+{
+    NSString *urlString = [NSString stringWithFormat:@"https://%@incentive/%@",baseUrl,[[NSUserDefaults standardUserDefaults] valueForKey:@"CoinBaseID"]];
+    NSLog(@"%@",urlString);
+    [[BitrunAPI sharedInstance] getRequest:urlString success:^(AFHTTPRequestOperation * operation, id response) {
+        NSLog(@"%@",response);
+        NSLog(@"%@",[response class]);
+        [[BitrunAPI sharedInstance] addIncentive:[[Incentive alloc] initWithDictionary:response]];
+        [self getProgress];
     }];
     
 }
 
+- (void)getProgress
+{
+    NSString *urlString = [NSString stringWithFormat:@"https://%@pedometer/%@",baseUrl,[[NSUserDefaults standardUserDefaults] valueForKey:@"CoinBaseID"]];
+    NSLog(@"%@",urlString);
+    [[BitrunAPI sharedInstance] getRequest:urlString success:^(AFHTTPRequestOperation * operation, id response) {
+        NSLog(@"%@",response);
+        NSLog(@"%@",[response class]);
+        [[BitrunAPI sharedInstance] addProgress:[response objectForKey:@"total_distance"]];
+        [self.HUD dismiss];
+        [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
+    }];
+}
 /*
 #pragma mark - Navigation
 
