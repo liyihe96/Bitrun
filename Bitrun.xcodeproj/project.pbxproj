@@ -20,6 +20,8 @@
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
 		076E1A091A0F236A00436D9F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 076E1A081A0F236A00436D9F /* Utility.m */; };
 		07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034741A0E37EE00B00408 /* BitrunAPI.m */; };
+		07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */; };
+		07B438251A0F4FD300C2C542 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */; };
 		07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D4A11A0F06BF00460C66 /* LoginViewController.m */; };
 		93D89DC526FE48AF421358C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A7CC9F5A18F7D67AC4C1D5 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,10 @@
 		076E1A081A0F236A00436D9F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		07B034731A0E37EE00B00408 /* BitrunAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitrunAPI.h; sourceTree = "<group>"; };
 		07B034741A0E37EE00B00408 /* BitrunAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitrunAPI.m; sourceTree = "<group>"; };
+		07B438201A0F4ED100C2C542 /* MultiplePulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplePulsingHaloLayer.h; sourceTree = "<group>"; };
+		07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplePulsingHaloLayer.m; sourceTree = "<group>"; };
+		07B438231A0F4FD300C2C542 /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
+		07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
 		07E3D4A01A0F06BF00460C66 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		07E3D4A11A0F06BF00460C66 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		686F4EA3B9CC5149137DAFC6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 		07235D081A0E0BC8007DCDAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				07B438201A0F4ED100C2C542 /* MultiplePulsingHaloLayer.h */,
+				07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */,
+				07B438231A0F4FD300C2C542 /* PulsingHaloLayer.h */,
+				07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */,
 				076E1A071A0F236A00436D9F /* Utility.h */,
 				076E1A081A0F236A00436D9F /* Utility.m */,
 				07235D341A0E0D87007DCDAC /* CoreMotion.framework */,
@@ -336,10 +346,12 @@
 			files = (
 				07E3D4A21A0F06BF00460C66 /* LoginViewController.m in Sources */,
 				07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */,
+				07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */,
 				076E1A091A0F236A00436D9F /* Utility.m in Sources */,
 				07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */,
 				07235D111A0E0BC8007DCDAC /* ViewController.m in Sources */,
 				07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */,
+				07B438251A0F4FD300C2C542 /* PulsingHaloLayer.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,
 				07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */,
 				07235D0B1A0E0BC8007DCDAC /* main.m in Sources */,

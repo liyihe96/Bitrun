@@ -13,6 +13,11 @@
 #import "BitrunAPI.h"
 #import "Utility.h"
 #import "PulsingHaloLayer.h"
+#import "MultiplePulsingHaloLayer.h"
+
+#define kMinRadius 100
+#define kMaxRadius 300
+#define kMaxNum 40.0
 
 
 @interface ViewController ()
@@ -26,14 +31,37 @@
 @property (nonatomic, strong) NSDate *lastDate;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
-@property (nonatomic, strong) PulsingHaloLayer *halo;
+@property (nonatomic, weak) PulsingHaloLayer *halo;
 @property (nonatomic, strong) NSNumber *calNumber;
+@property (nonatomic, strong) NSNumber *maxNumber;
+@property (nonatomic) int counter;
+@property (nonatomic) int tot;
+@property (nonatomic, weak) MultiplePulsingHaloLayer *mutiHalo;
 
 @end
 
 @implementation ViewController
 {
     AAPLActivityDataManager *_dataManager;
+}
+
+- (void)setCalNumber:(NSNumber *)calNumber
+{
+    _calNumber = calNumber;
+    self.counter ++;
+    self.tot += [calNumber intValue];
+    if (self.counter >= 5)
+    {
+        self.counter = 0;
+        [self setupValues:self.tot];
+        NSLog(@"tot: %d",self.tot);
+        self.tot = 0;
+    }
+//    if (calNumber > self.maxNumber) {
+//        self.maxNumber = calNumber;
+//        NSLog(@"--max:%@",self.maxNumber);
+//    }
+    
 }
 
 - (void)setPedometerdData:(CMPedometerData *)pedometerdData
@@ -52,7 +80,7 @@
     // Do any additional setup after loading the view, typically from a nib.
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:UIApplicationWillEnterForegroundNotification object:nil];
     _motionManager = [[CMMotionManager alloc] init];
-    _motionManager.accelerometerUpdateInterval = 0.1;
+    _motionManager.accelerometerUpdateInterval = 0.5;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,11 +89,39 @@
     [self refreshView];
     [self setNeedsStatusBarAppearanceUpdate];
     [self.locationView setFrame:CGRectMake(8, 533+124, 426, 0)];
-    self.halo.radius = 240;
-    self.halo = [PulsingHaloLayer layer];
-    self.halo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
-    [self.view.layer addSublayer:self.halo];
+//    self.halo = [PulsingHaloLayer layer];
+//    self.halo.radius = 300;
+//    self.halo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
+////    self.halo.animationDuration = 1;
+////    self.halo.useTimingFunction =
+//    [self.view.layer addSublayer:self.halo];
+    
+    //you can specify the number of halos by initial method or by instance property "haloLayerNumber"
+    MultiplePulsingHaloLayer *multiLayer = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
+    self.mutiHalo = multiLayer;
+    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
+    self.mutiHalo.useTimingFunction = NO;
+    [self.mutiHalo buildSublayers];
+    [self.view.layer addSublayer:self.mutiHalo];
+    [self setupValues:0];
+
 }
+
+- (void)setupValues:(int)num
+{
+    if (num>kMaxNum)
+    {
+        num = kMaxNum;
+    }
+    double ratio = num / kMaxNum;
+    NSLog(@"ratio:%f",ratio);
+    self.mutiHalo.radius = kMinRadius + ratio*(kMaxRadius-kMinRadius);
+    
+    UIColor *color = [UIColor colorWithRed:ratio green:1-ratio blue:0 alpha:1];
+    [self.mutiHalo setHaloLayerColor:color.CGColor];
+
+}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

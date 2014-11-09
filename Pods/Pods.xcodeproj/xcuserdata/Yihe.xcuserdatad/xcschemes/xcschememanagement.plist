@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-PulsingHalo.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-SIOSocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>39FFE7B7EC1FE8B345FDC8C3</key>
+		<key>1FF5D936ED1C520C28B5F757</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>542A8E272EA30F1B6D865241</key>
+		<key>266EAB51AF9260DA06161B8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>847BD56FCD624E13208D9474</key>
+		<key>5A935A7E16B9CBBD14884FA1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E036FF98B5588D45E1D3A2E</key>
+		<key>7E3CA11272BDE88D2BE77310</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4064E01414205410DB2D1E9</key>
+		<key>9459D9927B757BB716DD79BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB910108D37377895476647F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F2326A978F875761C016938C</key>
+		<key>DC7756F4661F5790E15CF3D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
