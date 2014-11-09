@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Coinbase.h"
 #import "CoinbaseOAuth.h"
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "LoginViewController.h"
 
 @interface AppDelegate ()

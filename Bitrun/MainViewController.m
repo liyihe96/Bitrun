@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Yihe Li. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "AAPLActivityDataManager.h"
 #import "AppDelegate.h"
 #import <CoreMotion/CoreMotion.h>
@@ -23,7 +23,7 @@
 #define kMaxInnerProgreeBarWidth 296
 
 
-@interface ViewController ()
+@interface MainViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *ratioLabel;
 @property (weak, nonatomic) IBOutlet UIView *innerProgressbarView;
 @property (weak, nonatomic) IBOutlet UIView *progressBarView;
@@ -50,7 +50,7 @@
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 {
     AAPLActivityDataManager *_dataManager;
 }
