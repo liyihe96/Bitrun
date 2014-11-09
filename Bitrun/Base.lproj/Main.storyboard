@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="taX-qy-tyb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -154,7 +154,7 @@
                                             <color key="backgroundColor" white="1" alpha="0.23999999999999999" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" id="iT6-Yx-Th9" customClass="CSAnimationView">
-                                            <rect key="frame" x="73" y="368" width="297" height="112"/>
+                                            <rect key="frame" x="73" y="328" width="297" height="112"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1r3-su-wHt">
@@ -183,6 +183,18 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="zkX-vR-yru">
+                                            <rect key="frame" x="81" y="467" width="296" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="V47-yX-NjF">
+                                                    <rect key="frame" x="0.0" y="-10" width="296" height="53"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" red="0.19215686269999999" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -196,8 +208,10 @@
                         <outlet property="backgroundImageView" destination="0L3-3w-8BZ" id="nvd-dt-0sa"/>
                         <outlet property="detailLocationLabel" destination="Sn7-9f-EBK" id="5Tf-bI-hpg"/>
                         <outlet property="distanceLabel" destination="vOl-il-lWT" id="6L5-89-zeh"/>
+                        <outlet property="innerProgressbarView" destination="V47-yX-NjF" id="204-dW-MI5"/>
                         <outlet property="locationLabel" destination="xGa-OJ-nCA" id="e3f-K4-ebe"/>
                         <outlet property="locationView" destination="hha-Tp-CXZ" id="vb1-0N-bqN"/>
+                        <outlet property="progressBarView" destination="zkX-vR-yru" id="MO4-M0-WAU"/>
                         <outlet property="statusLabel" destination="1r3-su-wHt" id="4Uj-RA-Ahu"/>
                         <outlet property="stepCountLabel" destination="H4c-uM-QrW" id="hbg-OZ-2dC"/>
                     </connections>

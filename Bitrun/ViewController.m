@@ -20,9 +20,12 @@
 #define kMinRadius 100
 #define kMaxRadius 300
 #define kMaxNum 40.0
+#define kMaxInnerProgreeBarWidth 296
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *innerProgressbarView;
+@property (weak, nonatomic) IBOutlet UIView *progressBarView;
 @property (weak, nonatomic) IBOutlet UILabel *stepCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 //@property (nonatomic, strong) NSNumber *currentSteps;
@@ -42,6 +45,7 @@
 @property (nonatomic) int counter;
 @property (nonatomic) int tot;
 @property (nonatomic, weak) MultiplePulsingHaloLayer *mutiHalo;
+@property (nonatomic) double progressRatio;
 
 @end
 
@@ -128,11 +132,15 @@
                                                  // An error occurred, more info is available by looking at the specific status returned.
                                              }
                                          }];
+    self.progressRatio = 0.7;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.progressBarView.layer.cornerRadius = 10;
+    self.progressBarView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.progressBarView.layer.borderWidth = 1;
     [self refreshView];
     [self setNeedsStatusBarAppearanceUpdate];
     [self.locationView setFrame:CGRectMake(8, 533+124, 426, 0)];
@@ -146,12 +154,15 @@
     //you can specify the number of halos by initial method or by instance property "haloLayerNumber"
     MultiplePulsingHaloLayer *multiLayer = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
     self.mutiHalo = multiLayer;
-    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-130);
+    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-170);
     self.mutiHalo.useTimingFunction = NO;
     [self.mutiHalo buildSublayers];
     [self.view.layer addSublayer:self.mutiHalo];
     [self setupValues:0];
-
+    [self.progressBarView setAlpha:0];
+    self.innerProgressbarView.backgroundColor = [UIColor redColor];
+    [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, 0, self.innerProgressbarView.frame.size.height) ];
+    
 }
 
 - (void)setupValues:(int)num
@@ -175,6 +186,12 @@
     [super viewDidAppear:animated];
     [UIView animateWithDuration:0.5 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.locationView setFrame:CGRectMake(8, 533, 426, 124)];
+    } completion:nil];
+    [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.progressBarView setAlpha:1];
+        [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, kMaxInnerProgreeBarWidth * self.progressRatio, self.innerProgressbarView.frame.size.height)];
+        UIColor *color = [UIColor colorWithRed:1-self.progressRatio green:self.progressRatio blue:0 alpha:1];
+        self.innerProgressbarView.backgroundColor = color;
     } completion:nil];
 }
 
