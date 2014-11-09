@@ -14,6 +14,8 @@
 #import "Utility.h"
 #import "PulsingHaloLayer.h"
 #import "MultiplePulsingHaloLayer.h"
+#import "INTULocationManager.h"
+#import <AddressBook/AddressBook.h>
 
 #define kMinRadius 100
 #define kMaxRadius 300
@@ -27,13 +29,16 @@
 @property (nonatomic, strong) NSString *currentStatus;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) CMMotionManager *motionManager;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (nonatomic, strong) CMPedometerData *pedometerdData;
 @property (nonatomic, strong) NSDate *lastDate;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (weak, nonatomic) IBOutlet UILabel *detailLocationLabel;
 @property (nonatomic, weak) PulsingHaloLayer *halo;
 @property (nonatomic, strong) NSNumber *calNumber;
 @property (nonatomic, strong) NSNumber *maxNumber;
+@property (nonatomic, strong) CMPedometerData *lastData;
 @property (nonatomic) int counter;
 @property (nonatomic) int tot;
 @property (nonatomic, weak) MultiplePulsingHaloLayer *mutiHalo;
@@ -68,11 +73,34 @@
 {
     _pedometerdData = pedometerdData;
     NSDate *nowDate = [NSDate date];
-    NSDictionary *arg = @{@"distance":pedometerdData.distance, @"from":[BitrunAPI iso8601StringFromDate:self.lastDate], @"to":[BitrunAPI iso8601StringFromDate: nowDate], @"steps":pedometerdData.numberOfSteps};
+    NSDictionary *arg = @{@"distance":@([pedometerdData.distance integerValue]- [self.lastData.distance integerValue]), @"from":[BitrunAPI iso8601StringFromDate:self.lastDate], @"to":[BitrunAPI iso8601StringFromDate: nowDate], @"steps":@([pedometerdData.numberOfSteps integerValue] -[self.lastData.numberOfSteps integerValue])};
     [[BitrunAPI sharedInstance] emit:@"pedometer" args:@[[BitrunAPI argsAppendByAccessToken: arg ]]];
     self.lastDate = nowDate;
-
+    self.lastData = pedometerdData;
 }
+
+- (void) ReverseGeocode: (CLLocation *)newLocation {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:newLocation
+                   completionHandler:^(NSArray *placemarks,
+                                       NSError *error) {
+                       if (error) {
+                           NSLog(@"Geocode failed with error: %@", error);
+                           return;
+                       }
+                       if (placemarks && placemarks.count > 0) {
+                           CLPlacemark *placemark = placemarks[0];
+                           NSDictionary *addressDictionary = placemark.addressDictionary;
+                           NSString *address = [addressDictionary objectForKey: (NSString *)kABPersonAddressStreetKey];
+                           NSString *city = [addressDictionary objectForKey: (NSString *)kABPersonAddressCityKey];
+                           NSString *state = [addressDictionary objectForKey: (NSString *)kABPersonAddressStateKey];
+                           NSString *zip = [addressDictionary objectForKey: (NSString *)kABPersonAddressZIPKey];
+                           self.locationLabel.text = city;
+                           self.detailLocationLabel.text = address;//[NSString localizedStringWithFormat: @"%@ %@ %@ %@", address,city, state, zip];
+                       }
+                   }];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,6 +109,25 @@
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:UIApplicationWillEnterForegroundNotification object:nil];
     _motionManager = [[CMMotionManager alloc] init];
     _motionManager.accelerometerUpdateInterval = 0.5;
+    INTULocationManager *locMgr = [INTULocationManager sharedInstance];
+    [locMgr requestLocationWithDesiredAccuracy:INTULocationAccuracyCity
+                                       timeout:10.0
+                          delayUntilAuthorized:YES  // This parameter is optional, defaults to NO if omitted
+                                         block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+                                             if (status == INTULocationStatusSuccess) {
+                                                 // Request succeeded, meaning achievedAccuracy is at least the requested accuracy, and
+                                                 // currentLocation contains the device's current location.
+                                                 [self ReverseGeocode: currentLocation];
+                                             }
+                                             else if (status == INTULocationStatusTimedOut) {
+                                                 // Wasn't able to locate the user with the requested accuracy within the timeout interval.
+                                                 // However, currentLocation contains the best location available (if any) as of right now,
+                                                 // and achievedAccuracy has info on the accuracy/recency of the location in currentLocation.
+                                             }
+                                             else {
+                                                 // An error occurred, more info is available by looking at the specific status returned.
+                                             }
+                                         }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,7 +146,7 @@
     //you can specify the number of halos by initial method or by instance property "haloLayerNumber"
     MultiplePulsingHaloLayer *multiLayer = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
     self.mutiHalo = multiLayer;
-    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
+    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-130);
     self.mutiHalo.useTimingFunction = NO;
     [self.mutiHalo buildSublayers];
     [self.view.layer addSublayer:self.mutiHalo];
@@ -148,8 +195,16 @@
         self.pedometerdData = pData;
         NSNumber *stepCount = pData.numberOfSteps;
         NSNumber *distance = pData.distance;
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        
+        [formatter setMaximumFractionDigits:2];
+        
+        [formatter setMinimumFractionDigits:0];
+        NSString *result = [formatter stringFromNumber:distance];
+        
         NSLog(@"%@", stepCount);
-        self.distanceLabel.text = [NSString stringWithFormat:@"%@m",distance];
+        self.distanceLabel.text = [NSString stringWithFormat:@"%@m",result];
         self.stepCountLabel.text =  [stepCount stringValue];
     }];
     [_dataManager startMotionUpdates:^(AAPLActivityType type) {

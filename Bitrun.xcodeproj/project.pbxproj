@@ -19,6 +19,8 @@
 		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
 		076E1A091A0F236A00436D9F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 076E1A081A0F236A00436D9F /* Utility.m */; };
+		079FFF431A0F62EE00B98A49 /* BIG JOHN.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */; };
+		079FFF441A0F62EE00B98A49 /* Slim Joe.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF421A0F62EE00B98A49 /* Slim Joe.otf */; };
 		07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B034741A0E37EE00B00408 /* BitrunAPI.m */; };
 		07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */; };
 		07B438251A0F4FD300C2C542 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B438241A0F4FD300C2C542 /* PulsingHaloLayer.m */; };
@@ -58,6 +60,8 @@
 		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
 		076E1A071A0F236A00436D9F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		076E1A081A0F236A00436D9F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BIG JOHN.otf"; sourceTree = "<group>"; };
+		079FFF421A0F62EE00B98A49 /* Slim Joe.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Slim Joe.otf"; sourceTree = "<group>"; };
 		07B034731A0E37EE00B00408 /* BitrunAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitrunAPI.h; sourceTree = "<group>"; };
 		07B034741A0E37EE00B00408 /* BitrunAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitrunAPI.m; sourceTree = "<group>"; };
 		07B438201A0F4ED100C2C542 /* MultiplePulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplePulsingHaloLayer.h; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		07235D081A0E0BC8007DCDAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */,
+				079FFF421A0F62EE00B98A49 /* Slim Joe.otf */,
 				07B438201A0F4ED100C2C542 /* MultiplePulsingHaloLayer.h */,
 				07B438211A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m */,
 				07B438231A0F4FD300C2C542 /* PulsingHaloLayer.h */,
@@ -291,6 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079FFF431A0F62EE00B98A49 /* BIG JOHN.otf in Resources */,
+				079FFF441A0F62EE00B98A49 /* Slim Joe.otf in Resources */,
 				07235D141A0E0BC8007DCDAC /* Main.storyboard in Resources */,
 				07235D191A0E0BC8007DCDAC /* LaunchScreen.xib in Resources */,
 				07235D161A0E0BC8007DCDAC /* Images.xcassets in Resources */,

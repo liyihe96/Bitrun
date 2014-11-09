@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-INTULocationManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-JGProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1FF5D936ED1C520C28B5F757</key>
+		<key>0915239BB6B078E76DB084D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>266EAB51AF9260DA06161B8D</key>
+		<key>37AA464341F83A6C726386FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5A935A7E16B9CBBD14884FA1</key>
+		<key>396DE8FACE27FEDE61FD22B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E3CA11272BDE88D2BE77310</key>
+		<key>75B4537897AC4E96162DB584</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9459D9927B757BB716DD79BC</key>
+		<key>766D56FE549EBAA943262631</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC7756F4661F5790E15CF3D3</key>
+		<key>80C781810DEFCD3DD83D3129</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD062473B05C56FE53DD41EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

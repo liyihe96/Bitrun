@@ -132,24 +132,24 @@
                                             <rect key="frame" x="8" y="533" width="426" height="124"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington St" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGa-OJ-nCA">
-                                                    <rect key="frame" x="146" y="59" width="249" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_location_pin_map-marker_glyph" id="IOG-v0-irh">
+                                                    <rect key="frame" x="36" y="27" width="45" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
-                                                    <color key="textColor" red="0.19215686269999999" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fby-hB-bUT">
-                                                    <rect key="frame" x="146" y="27" width="68" height="24"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="51 El St" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sn7-9f-EBK">
+                                                    <rect key="frame" x="146" y="74" width="257" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_location_pin_map-marker_glyph" id="IOG-v0-irh">
-                                                    <rect key="frame" x="36" y="27" width="45" height="66"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Mateo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGa-OJ-nCA">
+                                                    <rect key="frame" x="146" y="23" width="257" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
+                                                    <color key="textColor" red="0.19215686269999999" green="0.81568627449999997" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="0.23999999999999999" colorSpace="calibratedWhite"/>
                                         </view>
@@ -194,7 +194,9 @@
                     <size key="freeformSize" width="414" height="736"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="0L3-3w-8BZ" id="nvd-dt-0sa"/>
+                        <outlet property="detailLocationLabel" destination="Sn7-9f-EBK" id="5Tf-bI-hpg"/>
                         <outlet property="distanceLabel" destination="vOl-il-lWT" id="6L5-89-zeh"/>
+                        <outlet property="locationLabel" destination="xGa-OJ-nCA" id="e3f-K4-ebe"/>
                         <outlet property="locationView" destination="hha-Tp-CXZ" id="vb1-0N-bqN"/>
                         <outlet property="statusLabel" destination="1r3-su-wHt" id="4Uj-RA-Ahu"/>
                         <outlet property="stepCountLabel" destination="H4c-uM-QrW" id="hbg-OZ-2dC"/>
