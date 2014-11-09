@@ -19,6 +19,8 @@
 		07235D441A0E31A4007DCDAC /* AAPLMotionActivityQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 07235D411A0E31A4007DCDAC /* AAPLMotionActivityQuery.m */; };
 		07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */ = {isa = PBXBuildFile; fileRef = 07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */; };
 		076364141A0F882400A8233F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 076364131A0F882400A8233F /* ViewController.m */; };
+		076364171A0F90B700A8233F /* IncentivizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 076364161A0F90B700A8233F /* IncentivizeViewController.m */; };
+		0763641A1A0FC78000A8233F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 076364191A0FC78000A8233F /* WebViewController.m */; };
 		076E1A091A0F236A00436D9F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 076E1A081A0F236A00436D9F /* Utility.m */; };
 		079FFF431A0F62EE00B98A49 /* BIG JOHN.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */; };
 		079FFF441A0F62EE00B98A49 /* Slim Joe.otf in Resources */ = {isa = PBXBuildFile; fileRef = 079FFF421A0F62EE00B98A49 /* Slim Joe.otf */; };
@@ -62,6 +64,10 @@
 		07235D421A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.pascal; path = SampleCodeWorkspaceFinished.inc; sourceTree = "<group>"; };
 		076364121A0F882400A8233F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		076364131A0F882400A8233F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		076364151A0F90B700A8233F /* IncentivizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncentivizeViewController.h; sourceTree = "<group>"; };
+		076364161A0F90B700A8233F /* IncentivizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncentivizeViewController.m; sourceTree = "<group>"; };
+		076364181A0FC78000A8233F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		076364191A0FC78000A8233F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		076E1A071A0F236A00436D9F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		076E1A081A0F236A00436D9F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		079FFF411A0F62EE00B98A49 /* BIG JOHN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BIG JOHN.otf"; sourceTree = "<group>"; };
@@ -193,6 +199,10 @@
 				076364131A0F882400A8233F /* ViewController.m */,
 				07235D0F1A0E0BC8007DCDAC /* MainViewController.h */,
 				07235D101A0E0BC8007DCDAC /* MainViewController.m */,
+				076364151A0F90B700A8233F /* IncentivizeViewController.h */,
+				076364161A0F90B700A8233F /* IncentivizeViewController.m */,
+				076364181A0FC78000A8233F /* WebViewController.h */,
+				076364191A0FC78000A8233F /* WebViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -363,12 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				076364141A0F882400A8233F /* ViewController.m in Sources */,
+				0763641A1A0FC78000A8233F /* WebViewController.m in Sources */,
 				07235D431A0E31A4007DCDAC /* AAPLActivityDataManager.m in Sources */,
 				07B438221A0F4ED100C2C542 /* MultiplePulsingHaloLayer.m in Sources */,
 				076E1A091A0F236A00436D9F /* Utility.m in Sources */,
 				07235D451A0E31A4007DCDAC /* SampleCodeWorkspaceFinished.inc in Sources */,
 				079FFF4A1A0F71F200B98A49 /* LocalManager.m in Sources */,
 				07235D111A0E0BC8007DCDAC /* MainViewController.m in Sources */,
+				076364171A0F90B700A8233F /* IncentivizeViewController.m in Sources */,
 				07B034751A0E37EE00B00408 /* BitrunAPI.m in Sources */,
 				07B438251A0F4FD300C2C542 /* PulsingHaloLayer.m in Sources */,
 				07235D0E1A0E0BC8007DCDAC /* AppDelegate.m in Sources */,

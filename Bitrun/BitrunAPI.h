@@ -18,7 +18,8 @@
 + (BitrunAPI *)sharedInstance;
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args;
 + (NSDictionary *)argsAppendByAccessToken:(NSDictionary *)args;
-- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success;
+- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success fail:(void(^)(AFHTTPRequestOperation *, NSError *))failure;
+- (void)postRequest:(NSString *)url parameters:(NSDictionary *)parameter success:(void(^)(AFHTTPRequestOperation *,id))success;
 - (void)addIncentive:(Incentive *)incentive;
 - (void)addProgress:(NSNumber *)progress;
 - (Incentive *)getIncentive;

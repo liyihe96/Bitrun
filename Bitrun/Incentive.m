@@ -28,5 +28,16 @@
 {
     return [NSString stringWithFormat:@"%@,%@,%@,%@",self.createDate,self.expireDate,self.goal,self.amount];
 }
+- (instancetype)initWithGoal:(NSNumber *)goal
+{
+    if (self = [super init]) {
+        NSLog(@"setGOAL");
+        _goal = goal;
+        _createDate = nil;
+        _expireDate = nil;
+        _amount = nil;
+    }
+    return self;
+}
 
 @end

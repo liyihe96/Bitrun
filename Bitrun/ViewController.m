@@ -12,6 +12,7 @@
 #import "JGProgressHUD.h"
 #import "BitrunAPI.h"
 #import "Utility.h"
+#import "MainViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *dialogView;
@@ -164,7 +165,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:userId forKey:@"CoinBaseID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self getIncentive];
-    }];
+    } fail:nil];
 }
 
 - (void)getIncentive
@@ -176,8 +177,18 @@
         NSLog(@"%@",[response class]);
         [[BitrunAPI sharedInstance] addIncentive:[[Incentive alloc] initWithDictionary:response]];
         [self getProgress];
+    }fail:^(AFHTTPRequestOperation *operation, NSError * error) {
+        [self.HUD dismiss];
+        [self performSegueWithIdentifier:@"LoginSucceed" sender:@"error"];
     }];
-    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"LoginSucceed"] && [((NSString *)sender)isEqualToString:@"error"])
+         {
+             ((MainViewController *)segue.destinationViewController).error = YES;
+         }
 }
 
 - (void)getProgress
@@ -189,7 +200,7 @@
         NSLog(@"%@",[response class]);
         [[BitrunAPI sharedInstance] addProgress:[response objectForKey:@"total_distance"]];
         [self.HUD dismiss];
-        [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
-    }];
+        [self performSegueWithIdentifier:@"LoginSucceed" sender:@"no error"];
+    }fail:nil];
 }
 @end

@@ -14,5 +14,6 @@
 @property (nonatomic, copy, readonly) NSNumber *amount, *goal;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
+- (instancetype)initWithGoal:(NSNumber *)goal;
 - (NSString *)description;
 @end

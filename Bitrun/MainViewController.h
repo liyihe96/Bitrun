@@ -10,6 +10,8 @@
 
 @interface MainViewController : UIViewController
 
+@property BOOL error;
+
 
 @end
 

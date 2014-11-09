@@ -148,6 +148,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (self.error){
+        [self performSegueWithIdentifier:@"Incentivize" sender:self];
+    } else {
+        self.progressRatio = [[BitrunAPI sharedInstance]getProgreeRatio] ;
+        NSLog(@"-------DATA");
+        NSLog(@"%@",[[BitrunAPI sharedInstance] getTotalProgress]);
+        NSLog(@"%@",[[[BitrunAPI sharedInstance] getIncentive] description]);
+        NSLog(@"%f",[[BitrunAPI sharedInstance] getProgreeRatio]);
+    }
     self.progressBarView.layer.cornerRadius = 10;
     self.progressBarView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.progressBarView.layer.borderWidth = 1;

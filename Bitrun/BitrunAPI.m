@@ -72,10 +72,26 @@
 
 
 
-- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success
+- (void)getRequest:(NSString*)url success:(void(^)(AFHTTPRequestOperation *, id))success fail:(void(^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [self.httpManager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success){
+            success(operation, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(operation, error);
+        }
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+- (void)postRequest:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success
+{
+    NSDictionary *parameter = [BitrunAPI argsAppendByAccessToken:parameters];
+    NSLog(@"-----parameter: %@",parameter);
+    [self.httpManager POST:url parameters:parameter success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
             success(operation, responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -95,6 +111,7 @@
 
 - (Incentive *)getIncentive
 {
+
     return [self.localManager getIncentive];
 }
 

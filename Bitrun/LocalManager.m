@@ -31,6 +31,12 @@
 
 - (Incentive *)getIncentive
 {
+//    if (!_incentive)
+//    {
+//        NSLog(@"----------shit");
+//        _incentive = [[Incentive alloc] initWithGoal:0];
+//    }
+//    NSLog(@"%@",_incentive);
     return _incentive;
 }
 
@@ -41,6 +47,8 @@
 
 - (double)getProgreeRatio
 {
+    if ([[self getIncentive].goal doubleValue] == 0)
+        return 1;
     return [[self getTotalProgress] doubleValue] / [[self getIncentive].goal doubleValue];
 }
 
