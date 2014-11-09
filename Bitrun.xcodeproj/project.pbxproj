@@ -33,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		070FEE8F1A0EFF950070C725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/LoginViewController.h; sourceTree = "<group>"; };
+		070FEE911A0EFF950070C725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Base; path = Base.lproj/LoginViewController.m; sourceTree = "<group>"; };
 		07235D051A0E0BC8007DCDAC /* Bitrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07235D091A0E0BC8007DCDAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07235D0A1A0E0BC8007DCDAC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		07235D331A0E0CD1007DCDAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				070FEE8E1A0EFF950070C725 /* LoginViewController.h */,
+				070FEE901A0EFF950070C725 /* LoginViewController.m */,
 				07235D0F1A0E0BC8007DCDAC /* ViewController.h */,
 				07235D101A0E0BC8007DCDAC /* ViewController.m */,
 			);
@@ -353,6 +357,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		070FEE8E1A0EFF950070C725 /* LoginViewController.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				070FEE8F1A0EFF950070C725 /* Base */,
+			);
+			name = LoginViewController.h;
+			sourceTree = "<group>";
+		};
+		070FEE901A0EFF950070C725 /* LoginViewController.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				070FEE911A0EFF950070C725 /* Base */,
+			);
+			name = LoginViewController.m;
+			sourceTree = "<group>";
+		};
 		07235D121A0E0BC8007DCDAC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -10,7 +10,8 @@
 
 @interface BitrunAPI()
 @property (nonatomic, strong) SIOSocket * socket;
-@property BOOL socketIsConnected;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *httpManager;
+//@property BOOL socketIsConnected;
 @end
 
 @implementation BitrunAPI
@@ -18,15 +19,16 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket)
+        [SIOSocket socketWithHost: @"http://bitrunapp.herokuapp.com" response: ^(SIOSocket *socket)
          {
              self.socket = socket;
          }];
-        __weak typeof(self) weakSelf = self;
-        self.socket.onConnect = ^()
-        {
-            weakSelf.socketIsConnected = YES;
-        };
+//        __weak typeof(self) weakSelf = self;
+//        self.socket.onConnect = ^()
+//        {
+//            weakSelf.socketIsConnected = YES;
+//        };
+        self.httpManager = [AFHTTPRequestOperationManager manager];
     }
     return self;
 }
@@ -48,21 +50,30 @@
 
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args
 {
-    if (self.socketIsConnected)
-    {
+    NSLog(@"----------CAlled");
+//    if (self.socketIsConnected)
+//    {
+        NSLog(@"-------------SENT");
         [self.socket emit:event args:args];
-    }
+//    }
 }
 
 + (SIOParameterArray *)argsAppendByAccessToken:(SIOParameterArray *)args
 {
-    if ([args isKindOfClass:[NSDictionary class]])
-    {
-        NSMutableDictionary *newArgs = [NSMutableDictionary dictionaryWithDictionary:((NSDictionary *) args)];
-        [newArgs addEntriesFromDictionary:@{@"access_token":[[NSUserDefaults  standardUserDefaults] valueForKey:@"CoinBaseAccessToken"]}];
-        return [newArgs copy];
-    }
-    return args;
+    NSMutableArray *array = [NSMutableArray arrayWithArray:args];
+    [array addObject:[[NSUserDefaults standardUserDefaults] valueForKey:@"CoinBaseAccessToken"]];
+    return array;
+}
+
++ (NSString *)iso8601StringFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+    
+    NSString *iso8601String = [dateFormatter stringFromDate:date];
+    return iso8601String;
 }
 
 @end

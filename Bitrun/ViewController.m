@@ -10,6 +10,8 @@
 #import "AAPLActivityDataManager.h"
 #import "AppDelegate.h"
 #import "CoinbaseOAuth.h"
+#import <CoreMotion/CoreMotion.h>
+#import "BitrunAPI.h"
 
 
 @interface ViewController ()
@@ -17,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 //@property (nonatomic, strong) NSNumber *currentSteps;
 @property (nonatomic, strong) NSString *currentStatus;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (strong, nonatomic) CMMotionManager *motionManager;
+@property (nonatomic, strong) CMPedometerData *pedometerdData;
+@property (nonatomic, strong) NSDate *lastDate;
 
 @end
 
@@ -25,10 +31,23 @@
     AAPLActivityDataManager *_dataManager;
 }
 
+- (void)setPedometerdData:(CMPedometerData *)pedometerdData
+{
+    _pedometerdData = pedometerdData;
+    NSDate *nowDate = [NSDate date];
+    NSDictionary *arg = @{@"distance":pedometerdData.distance, @"from":[BitrunAPI iso8601StringFromDate:self.lastDate], @"to":[BitrunAPI iso8601StringFromDate: nowDate], @"steps":pedometerdData.numberOfSteps};
+    [[BitrunAPI sharedInstance] emit:@"pedometer" args:@[arg]];
+    self.lastDate = nowDate;
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.lastDate = ((AppDelegate *)[UIApplication sharedApplication].delegate).openAppDate;
     // Do any additional setup after loading the view, typically from a nib.
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView) name:UIApplicationWillEnterForegroundNotification object:nil];
+    _motionManager = [[CMMotionManager alloc] init];
+    _motionManager.accelerometerUpdateInterval = 0.1;
 }
 
 #pragma mark -CoinBase OAuth
@@ -77,15 +96,60 @@
     [_dataManager stopStepUpdates];
     [_dataManager stopMotionUpdates];
 
-    [_dataManager startStepUpdates:^(NSNumber *stepCount) {
+    [_dataManager startStepUpdates:^(CMPedometerData *pData) {
+        self.pedometerdData = pData;
+        NSNumber *stepCount = pData.numberOfSteps;
+        NSNumber *distance = pData.distance;
         NSLog(@"%@", stepCount);
+        self.distanceLabel.text = [NSString stringWithFormat:@"%@m",distance];
         self.stepCountLabel.text =  [stepCount stringValue];
     }];
     [_dataManager startMotionUpdates:^(AAPLActivityType type) {
         NSLog(@"update");
         self.statusLabel.text = [AAPLActivityDataManager  activityTypeToString:type];
     }];
+//    [_motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+//                                withHandler:^(CMGyroData *gyroData, NSError *error) {
+//                                    [self outputRotationData:gyroData.rotationRate];
+//                                }];
+    [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                         withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+                                             [self handleAccelerometerData:accelerometerData.acceleration];
+                                         }];
+
 }
+
+- (void)handleAccelerometerData:(CMAcceleration)acceleration
+{
+//    NSLog(@"x :%f",acceleration.x);
+//    NSLog(@"y :%f",acceleration.y);
+//    NSLog(@"z :%f",acceleration.z);
+    NSLog(@"cal: %f", acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z *acceleration.z);
+    
+}
+
+//-(void)outputRotationData:(CMRotationRate)rotation
+//{
+//    
+//    _lblRotationX.text = [NSString stringWithFormat:@"Rotation X: %.2fr/s",rotation.x];
+//    if(fabs(rotation.x)> fabs(_maxRotationX))
+//    {
+//        _maxRotationX = rotation.x;
+//        _lblMaxRotationX.text = [NSString stringWithFormat:@"Max Rotation X: %.2f",_maxRotationX];
+//    }
+//    _lblRotationY.text = [NSString stringWithFormat:@"Rotation Y: %.2fr/s",rotation.y];
+//    if(fabs(rotation.y) > fabs(_maxRotationY))
+//    {
+//        _maxRotationY = rotation.y;
+//        _lblMaxRotationY.text = [NSString stringWithFormat:@"Max Rotation Y: %.2f",_maxRotationY];
+//    }
+//    _lblRotationZ.text = [NSString stringWithFormat:@"Rotation Z: %.2fr/s",rotation.z];
+//    if(fabs(rotation.z) > fabs(_maxRotationZ))
+//    {
+//        _maxRotationZ = rotation.z;
+//        _lblMaxRotationZ.text = [NSString stringWithFormat:@"Max Rotation Z: %.2f",_maxRotationZ];
+//    }
+//}
 
 - (void)viewWillAppear:(BOOL)animated
 {

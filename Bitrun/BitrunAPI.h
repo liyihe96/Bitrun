@@ -16,4 +16,5 @@
 + (BitrunAPI *)sharedInstance;
 - (void)emit:(NSString *)event args:(SIOParameterArray *)args;
 + (SIOParameterArray *)argsAppendByAccessToken:(SIOParameterArray *)args;
++ (NSString *)iso8601StringFromDate:(NSDate *)date;
 @end

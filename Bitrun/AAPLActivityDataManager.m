@@ -65,6 +65,7 @@ Abstract:
 - (void)reset
 {
 	_stepCounts = nil;
+    _distance = nil;
 	_walkingDuration = 0;
 	_runningDuration = 0;
 	_vehicularDuration = 0;

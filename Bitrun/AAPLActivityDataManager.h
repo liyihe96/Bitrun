@@ -10,6 +10,7 @@ Abstract:
 
 @class AAPLMotionActivityQuery;
 @class CMMotionActivity;
+@import CoreMotion;
 
 typedef NS_ENUM(NSInteger, AAPLActivityType) {
 	ActivityTypeWalking,
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSInteger, AAPLActivityType) {
 	ActivityTypeNone
 };
 
-typedef void (^AAPLStepUpdateHandler)(NSNumber *stepCount);
+typedef void (^AAPLStepUpdateHandler)(CMPedometerData *pData);
 typedef void (^AAPLMotionUpdateHandler)(AAPLActivityType type);
 typedef void (^AAPLActivityCompletionHandler)();
 
@@ -43,6 +44,7 @@ typedef void (^AAPLActivityCompletionHandler)();
 @property (readonly, nonatomic) NSTimeInterval vehicularDuration;
 @property (readonly, nonatomic) NSTimeInterval movingDuration;
 @property (readonly, nonatomic) NSNumber *stepCounts;
+@property (readonly, nonatomic) NSNumber *distance;
 @property (readonly, nonatomic) NSArray *significantActivitiesAndSteps;
 
 // Init with query
