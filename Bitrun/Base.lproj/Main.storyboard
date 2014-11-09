@@ -23,7 +23,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="442" height="736"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" id="bLE-B4-VpW" customClass="CSAnimationView">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="bLE-B4-VpW">
                                             <rect key="frame" x="-12" y="637" width="253" height="119"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
@@ -38,7 +38,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vOl-il-lWT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vOl-il-lWT">
                                                             <rect key="frame" x="37" y="28" width="138" height="43"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
@@ -50,17 +50,8 @@
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                    <real key="value" value="0.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="type" value="slideUp"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                                    <integer key="value" value="0"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view contentMode="scaleToFill" id="aJ0-kW-g6U" customClass="CSAnimationView">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="aJ0-kW-g6U">
                                             <rect key="frame" x="201" y="637" width="253" height="119"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
@@ -75,7 +66,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H4c-uM-QrW">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H4c-uM-QrW">
                                                             <rect key="frame" x="33" y="28" width="146" height="43"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
@@ -87,15 +78,6 @@
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="type" value="slideUp"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                    <real key="value" value="0.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                                    <real key="value" value="0.20000000000000001"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" id="hha-Tp-CXZ">
                                             <rect key="frame" x="8" y="533" width="426" height="124"/>
@@ -122,7 +104,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="0.23999999999999999" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" id="iT6-Yx-Th9" customClass="CSAnimationView">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="iT6-Yx-Th9">
                                             <rect key="frame" x="73" y="328" width="297" height="112"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
@@ -142,15 +124,6 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="type" value="fadeIn"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                                    <integer key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                                    <real key="value" value="0.40000000000000002"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" id="zkX-vR-yru">
                                             <rect key="frame" x="81" y="467" width="296" height="33"/>
@@ -184,13 +157,16 @@
                         <outlet property="backgroundImageView" destination="0L3-3w-8BZ" id="nvd-dt-0sa"/>
                         <outlet property="detailLocationLabel" destination="Sn7-9f-EBK" id="5Tf-bI-hpg"/>
                         <outlet property="distanceLabel" destination="vOl-il-lWT" id="6L5-89-zeh"/>
+                        <outlet property="distanceView" destination="bLE-B4-VpW" id="G2h-u1-Hxu"/>
                         <outlet property="innerProgressbarView" destination="V47-yX-NjF" id="204-dW-MI5"/>
                         <outlet property="locationLabel" destination="xGa-OJ-nCA" id="e3f-K4-ebe"/>
                         <outlet property="locationView" destination="hha-Tp-CXZ" id="vb1-0N-bqN"/>
                         <outlet property="progressBarView" destination="zkX-vR-yru" id="MO4-M0-WAU"/>
                         <outlet property="ratioLabel" destination="ls5-Zg-woT" id="TOl-UG-JoD"/>
                         <outlet property="statusLabel" destination="1r3-su-wHt" id="4Uj-RA-Ahu"/>
+                        <outlet property="statusView" destination="iT6-Yx-Th9" id="mC3-gx-NYn"/>
                         <outlet property="stepCountLabel" destination="H4c-uM-QrW" id="hbg-OZ-2dC"/>
+                        <outlet property="stepCountView" destination="aJ0-kW-g6U" id="Jr6-Kg-JZn"/>
                         <segue destination="LCw-XR-TV8" kind="modal" identifier="Incentivize" id="rcs-Sq-Jqh"/>
                     </connections>
                 </viewController>

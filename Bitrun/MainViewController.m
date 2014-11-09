@@ -24,6 +24,9 @@
 
 
 @interface MainViewController ()
+@property (weak, nonatomic) IBOutlet UIView *stepCountView;
+@property (weak, nonatomic) IBOutlet UIView *distanceView;
+@property (weak, nonatomic) IBOutlet UIView *statusView;
 @property (weak, nonatomic) IBOutlet UILabel *ratioLabel;
 @property (weak, nonatomic) IBOutlet UIView *innerProgressbarView;
 @property (weak, nonatomic) IBOutlet UIView *progressBarView;
@@ -143,6 +146,20 @@
                                                  // An error occurred, more info is available by looking at the specific status returned.
                                              }
                                          }];
+    self.progressBarView.layer.cornerRadius = 10;
+    self.progressBarView.layer.borderColor = [UIColor grayColor].CGColor;
+    self.progressBarView.layer.borderWidth = 2;
+    [self refreshView];
+    [self setNeedsStatusBarAppearanceUpdate];
+
+    MultiplePulsingHaloLayer *multiLayer = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
+    self.mutiHalo = multiLayer;
+    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-170);
+    self.mutiHalo.useTimingFunction = NO;
+    [self.mutiHalo buildSublayers];
+    [self.view.layer addSublayer:self.mutiHalo];
+    [self setupValues:0];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -157,12 +174,7 @@
         NSLog(@"%@",[[[BitrunAPI sharedInstance] getIncentive] description]);
         NSLog(@"%f",[[BitrunAPI sharedInstance] getProgreeRatio]);
     }
-    self.progressBarView.layer.cornerRadius = 10;
-    self.progressBarView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.progressBarView.layer.borderWidth = 1;
-    [self refreshView];
-    [self setNeedsStatusBarAppearanceUpdate];
-    [self.locationView setFrame:CGRectMake(8, 533+124, 426, 0)];
+        [self.locationView setFrame:CGRectMake(8, 533+124, 426, 0)];
 //    self.halo = [PulsingHaloLayer layer];
 //    self.halo.radius = 300;
 //    self.halo.position = CGPointMake(self.view.center.x, self.view.center.y-100);
@@ -171,13 +183,6 @@
 //    [self.view.layer addSublayer:self.halo];
     
     //you can specify the number of halos by initial method or by instance property "haloLayerNumber"
-    MultiplePulsingHaloLayer *multiLayer = [[MultiplePulsingHaloLayer alloc] initWithHaloLayerNum:3 andStartInterval:1];
-    self.mutiHalo = multiLayer;
-    self.mutiHalo.position = CGPointMake(self.view.center.x, self.view.center.y-170);
-    self.mutiHalo.useTimingFunction = NO;
-    [self.mutiHalo buildSublayers];
-    [self.view.layer addSublayer:self.mutiHalo];
-    [self setupValues:0];
     [self.progressBarView setAlpha:0];
     [self.ratioLabel setAlpha:0];
     self.innerProgressbarView.backgroundColor = [UIColor redColor];
@@ -191,6 +196,9 @@
     NSString *otherResult = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getIncentive].goal];
     NSString *result = [formatter stringFromNumber:[[BitrunAPI sharedInstance] getTotalProgress]];
     self.ratioLabel.text = [NSString stringWithFormat:@"%@km/%@km",result, otherResult];
+    self.statusView.alpha = 0;
+    self.distanceView.transform = CGAffineTransformMakeTranslation(0, 79);
+    self.stepCountView.transform = CGAffineTransformMakeTranslation(0, 79);
 }
 
 - (void)setupValues:(int)num
@@ -205,17 +213,25 @@
     
     UIColor *color = [UIColor colorWithRed:ratio green:1-ratio blue:0 alpha:1];
     [self.mutiHalo setHaloLayerColor:color.CGColor];
-
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.distanceView.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:nil];
+    [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.stepCountView.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:nil];
     [UIView animateWithDuration:0.5 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
         [self.locationView setFrame:CGRectMake(8, 533, 426, 124)];
     } completion:nil];
     [UIView animateWithDuration:1 delay:0.4 options:UIViewAnimationOptionCurveLinear animations:^{
+        self.statusView.alpha = 1;
         [self.progressBarView setAlpha:1];
         [self.ratioLabel setAlpha:1];
         [self.innerProgressbarView setFrame:CGRectMake(self.innerProgressbarView.frame.origin.x, self.innerProgressbarView.frame.origin.y, kMaxInnerProgreeBarWidth * self.progressRatio, self.innerProgressbarView.frame.size.height)];
